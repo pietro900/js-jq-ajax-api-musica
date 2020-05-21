@@ -35,29 +35,29 @@ $(document).ready(function() {
     });
 
     // clicco cul genere;
-        $('#ricerca').change(function() {
-        // leggo opzione selezionata;
-        var val = $("#ricerca option:selected").text().toLowerCase();
-        console.log(val);
+    $('#ricerca').change(function() {
+    // leggo opzione selezionata dall'utente;
+    var val = $("#ricerca option:selected").text().toLowerCase();
 
-        if ( val != '') {
-            //recupero il genere per ogni album;
-            $('.genre').each(function() {
-                var nomecontatto = $(this).text().toLowerCase();
-
-                // confronto cio che ha selezionato l'utente con i contatti;
-                //se è uguale visualizzo;
-                if (nomecontatto.includes(val)) {
-                    $(this).parents('.cd').show();
-                } else {
-                    $(this).parents('.cd').hide();
-                };
-            });
-        } else {
+        if (val == 'tutti') {
             $('.cd').show();
+        } else {
+            //recupero il testo per ogni genere;
+            $('.genre').each(function() {
+                var nomegenere = $(this).text().toLowerCase();
+                // confronto cio che ha scritto l'utente con i contatti;
+                //se è uguale visualizzo;
+                if (nomegenere.includes(val)) {
+                    $(this).parents('.cd').show();
+                    console.log(this);
+                }
+                else {
+                    $(this).parents('.cd').hide();
+                }
+            });
         }
+    });
 });
-
     // //intercetto il focus sull'imput
     // $('#ricerca').keyup(function() {
     //     //leggo cio che ha scritto l'utente nell'imput;
@@ -81,4 +81,3 @@ $(document).ready(function() {
     //            $('.cd').show();
     //         }
     // });
-});

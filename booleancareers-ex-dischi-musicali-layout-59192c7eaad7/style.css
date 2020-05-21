@@ -21,6 +21,11 @@ body {
     margin: auto;
 }
 
+select{
+    margin: auto;
+    height: 50%;
+}
+
 header {
     width: 100%;
     height: 70px;
