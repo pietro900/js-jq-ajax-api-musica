@@ -34,33 +34,29 @@ $(document).ready(function() {
         }
     });
 
-
+    // clicco cul genere;
         $('#ricerca').change(function() {
-        var val = $("#ricerca option:selected").text().toLowerCase();;
+        // leggo opzione selezionata;
+        var val = $("#ricerca option:selected").text().toLowerCase();
         console.log(val);
-           if ( val != '') {
 
-               //recupero il testo per ogni ;
-               $('.genre').each(function() {
-                   var nomecontatto = $(this).text().toLowerCase();
+        if ( val != '') {
+            //recupero il genere per ogni album;
+            $('.genre').each(function() {
+                var nomecontatto = $(this).text().toLowerCase();
 
-                   // confronto cio che ha scritto l'utente con i contatti;
-                   //se è uguale visualizzo;
-                   if (nomecontatto.includes(val)) {
-                          $(this).parents('.cd').show();
-                      } else {
-                          $(this).parents('.cd').hide();
-                      }
-                  })
-              } else {
-                  $('.cd').show();
-               }
+                // confronto cio che ha selezionato l'utente con i contatti;
+                //se è uguale visualizzo;
+                if (nomecontatto.includes(val)) {
+                    $(this).parents('.cd').show();
+                } else {
+                    $(this).parents('.cd').hide();
+                };
+            });
+        } else {
+            $('.cd').show();
+        }
 });
-
-
-
-
-
 
     // //intercetto il focus sull'imput
     // $('#ricerca').keyup(function() {
