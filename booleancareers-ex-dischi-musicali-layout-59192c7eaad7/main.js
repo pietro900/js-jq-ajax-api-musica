@@ -36,14 +36,25 @@ $(document).ready(function() {
 
 
         $('#ricerca').change(function() {
-        var val = $("#ricerca option:selected").text();
+        var val = $("#ricerca option:selected").text().toLowerCase();;
         console.log(val);
-        var genre = $(this).attr('value');
-        console.log(genre);
-        // if (val == d) {
-            // $('.genere').hide()
-            // $(this).show()
-        // }
+           if ( val != '') {
+
+               //recupero il testo per ogni ;
+               $('.genre').each(function() {
+                   var nomecontatto = $(this).text().toLowerCase();
+
+                   // confronto cio che ha scritto l'utente con i contatti;
+                   //se è uguale visualizzo;
+                   if (nomecontatto.includes(val)) {
+                          $(this).parents('.cd').show();
+                      } else {
+                          $(this).parents('.cd').hide();
+                      }
+                  })
+              } else {
+                  $('.cd').show();
+               }
 });
 
 
